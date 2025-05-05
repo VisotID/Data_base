@@ -58,6 +58,9 @@ public class DataBController {
      */
     private final Data_base data_base = new Data_base();
 
+    /**
+     *
+     */
     private TableView.TableViewSelectionModel<Client> selectionModel;
 
     /**

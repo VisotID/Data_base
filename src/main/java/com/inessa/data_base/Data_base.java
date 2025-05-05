@@ -1,5 +1,5 @@
 package com.inessa.data_base;
-
+// Автор:Высоцкая И. Д.
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -14,7 +14,7 @@ public class Data_base {
 
     /**
      * Список с клиентами
-     * ObservableList используем
+     * ObservableList используем для наблюдения, таблица наблюдатель, список наблюдаемый(чтобы отслеживать изменения)
      */
     ObservableList<Client> Client_list = FXCollections.observableArrayList();
 
