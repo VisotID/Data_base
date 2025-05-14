@@ -1,76 +1,266 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Определяет, что это XML-документ версии 1.0 с кодировкой UTF-8. -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<!-- Импортирует все классы из пакета javafx.scene.control (элементы управления, такие как Button, Label, TableView и т.д.). -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="649.0" style="-fx-background-color: #CCCCFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inessa.data_base.DataBController">
+<?import javafx.scene.layout.*?>
+<!-- Импортирует все классы из пакета javafx.scene.layout (контейнеры для компоновки, такие как AnchorPane, ToolBar и т.д.). -->
+
+<?import javafx.scene.text.*?>
+<!-- Импортирует классы из пакета javafx.scene.text (для работы с текстом, например, Font). -->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="649.0" style="-fx-background-color: #CCCCFF;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inessa.data_base.DataBController">
+    <!-- Создаёт корневой контейнер AnchorPane (панель с привязкой элементов к краям). Устанавливает максимальные и минимальные размеры как неограниченные (-Infinity), предпочтительные размеры: высота 570 пикселей, ширина 649 пикселей. Задаёт фоновый цвет #CCCCFF (светло-фиолетовый). Определяет пространства имён для JavaFX и FXML. Связывает файл с контроллером com.inessa.data_base.DataBController. -->
+
    <children>
+       <!-- Открывает секцию для дочерних элементов AnchorPane. -->
+
       <TableView fx:id="client_table" layoutX="3.0" layoutY="62.0" prefHeight="322.0" prefWidth="642.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+          <!-- Создаёт TableView (таблицу) с идентификатором client_table для связи с контроллером. Расположена в координатах (3, 62). Предпочтительные размеры: высота 322 пикселя, ширина 642 пикселя. Привязана к левому (0), правому (0) и верхнему (62) краям AnchorPane. -->
+
         <columns>
+            <!-- Открывает секцию для определения столбцов таблицы. -->
+
           <TableColumn fx:id="fam_col" prefWidth="115.0" text="Фамилия" />
+            <!-- Создаёт столбец таблицы с идентификатором fam_col, шириной 115 пикселей и заголовком "Фамилия". -->
+
           <TableColumn fx:id="name_col" prefWidth="115.0" text="Имя" />
+            <!-- Создаёт столбец таблицы с идентификатором name_col, шириной 115 пикселей и заголовком "Имя". -->
+
             <TableColumn fx:id="otch_col" prefWidth="115.0" text="Отчество" />
+            <!-- Создаёт столбец таблицы с идентификатором otch_col, шириной 115 пикселей и заголовком "Отчество". -->
+
             <TableColumn fx:id="gender_col" prefWidth="105.0" text="Пол" />
+            <!-- Создаёт столбец таблицы с идентификатором gender_col, шириной 105 пикселей и заголовком "Пол". -->
+
             <TableColumn fx:id="strig_col" prefWidth="105.0" text="Стрижка" />
+            <!-- Создаёт столбец таблицы с идентификатором strig_col, шириной 105 пикселей и заголовком "Стрижка". --><!-- Создаёт столбец таблицы с идентификатором strig_col, шириной 105 пикселей и заголовком "Стрижка". -->
+
             <TableColumn fx:id="price_col" prefWidth="87.0" text="Цена" />
+            <!-- Создаёт столбец таблицы с идентификатором price_col, шириной 87 пикселей и заголовком "Цена". -->
+
         </columns>
+          <!-- Закрывает секцию столбцов таблицы. -->
+
          <columnResizePolicy>
+             <!-- Открывает секцию для настройки политики изменения размеров столбцов. -->
+
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+             <!-- Устанавливает политику CONSTRAINED_RESIZE_POLICY, при которой столбцы автоматически распределяют доступное пространство, но не могут быть сжаты меньше минимальной ширины. -->
+
          </columnResizePolicy>
+          <!-- Закрывает секцию политики изменения размеров столбцов. -->
+
       </TableView>
+       <!-- Закрывает элемент TableView. -->
+
       <TextField fx:id="fam_f" layoutX="108.0" layoutY="398.0" prefHeight="26.0" prefWidth="171.0" />
+       <!-- Создаёт TextField (поле ввода текста) с идентификатором fam_f для ввода фамилии. Расположено в координатах (108, 398). Предпочтительные размеры: высота 26 пикселей, ширина 171 пиксель. -->
+
       <TextField fx:id="name_f" layoutX="108.0" layoutY="436.0" prefHeight="26.0" prefWidth="171.0" />
+       <!-- Создаёт TextField с идентификатором name_f для ввода имени. Расположено в координатах (108, 436). Предпочтительные размеры: высота 26 пикселей, ширина 171 пиксель. -->
+
       <TextField fx:id="otch_f" layoutX="108.0" layoutY="472.0" prefHeight="26.0" prefWidth="171.0" />
+       <!-- Создаёт TextField с идентификатором otch_f для ввода отчества. Расположено в координатах (108, 472). Предпочтительные размеры: высота 26 пикселей, ширина 171 пиксель. -->
+
       <TextField fx:id="strig_f" layoutX="463.0" layoutY="411.0" />
+       <!-- Создаёт TextField с идентификатором strig_f для ввода данных о стрижке. Расположено в координатах (463, 411). Размеры не указаны, используются значения по умолчанию. -->
+
       <TextField fx:id="price_f" layoutX="463.0" layoutY="449.0" />
-      <Label layoutX="37.0" layoutY="402.0" prefHeight="18.0" prefWidth="59.0" text="Фамилия" />
-      <Label layoutX="37.0" layoutY="440.0" prefHeight="18.0" prefWidth="45.0" text="Имя" />
-      <Label layoutX="37.0" layoutY="476.0" prefHeight="18.0" prefWidth="59.0" text="Отчество" />
-      <Label layoutX="401.0" layoutY="415.0" text="Стрижка" />
-      <Label layoutX="401.0" layoutY="452.0" prefHeight="18.0" prefWidth="48.0" text="Цена" />
+       <!-- Создаёт TextField с идентификатором price_f для ввода цены. Расположено в координатах (463, 449). Размеры не указаны, используются значения по умолчанию. -->
+
+      <Label layoutX="37.0" layoutY="402.0" prefHeight="18.0" prefWidth="59.0" text="Фамилия">
+          <!-- Создаёт Label (текстовую метку) с текстом "Фамилия". Расположена в координатах (37, 402). Предпочтительные размеры: высота 18 пикселей, ширина 59 пикселей. -->
+
+         <font>
+             <!-- Открывает секцию для настройки шрифта метки. -->
+
+            <Font name="Segoe UI" size="12.0" />
+             <!-- Устанавливает шрифт Segoe UI с размером 12 для метки "Фамилия". -->
+
+         </font>
+          <!-- Закрывает секцию шрифта. -->
+
+      </Label>
+       <!-- Закрывает элемент Label для "Фамилия". -->
+
+      <Label layoutX="37.0" layoutY="440.0" prefHeight="18.0" prefWidth="45.0" text="Имя">
+          <!-- Создаёт Label с текстом "Имя". Расположена в координатах (37, 440). Предпочтительные размеры: высота 18 пикселей, ширина 45 пикселей. -->
+
+         <font>
+             <!-- Открывает секцию для настройки шрифта метки. -->
+
+            <Font name="Segoe UI" size="12.0" />
+             <!-- Устанавливает шрифт Segoe UI с размером 12 для метки "Имя". -->
+
+         </font>
+          <!-- Закрывает секцию шрифта. -->
+
+      </Label>
+       <!-- Закрывает элемент Label для "Имя". -->
+
+      <Label layoutX="37.0" layoutY="476.0" prefHeight="18.0" prefWidth="59.0" text="Отчество">
+          <!-- Создаёт Label с текстом "Отчество". Расположена в координатах (37, 476). Предпочтительные размеры: высота 18 пикселей, ширина 59 пикселей. -->
+
+         <font>
+             <!-- Открывает секцию для настройки шрифта метки. -->
+
+            <Font name="Segoe UI" size="12.0" />
+             <!-- Устанавливает шрифт Segoe UI с размером 12 для метки "Отчество". -->
+
+         </font>
+          <!-- Закрывает секцию шрифта. -->
+
+      </Label>
+       <!-- Закрывает элемент Label для "Отчество". -->
+
+      <Label layoutX="401.0" layoutY="415.0" text="Стрижка">
+          <!-- Создаёт Label с текстом "Стрижка". Расположена в координатах (401, 415). Размеры не указаны, используются значения по умолчанию. -->
+
+         <font>
+             <!-- Открывает секцию для настройки шрифта метки. -->
+
+            <Font name="Segoe UI" size="12.0" />
+             <!-- Устанавливает шрифт Segoe UI с размером 12 для метки "Стрижка". -->
+
+         </font>
+          <!-- Закрывает секцию шрифта. -->
+
+      </Label>
+       <!-- Закрывает элемент Label для "Стрижка". -->
+
+      <Label layoutX="401.0" layoutY="452.0" prefHeight="18.0" prefWidth="48.0" text="Цена">
+          <!-- Создаёт Label с текстом "Цена". Расположена в координатах (401, 452). Предпочтительные размеры: высота 18 пикселей, ширина 48 пикселей. -->
+
+         <font>
+             <!-- Открывает секцию для настройки шрифта метки. -->
+
+            <Font name="Segoe UI" size="12.0" />
+             <!-- Устанавливает шрифт Segoe UI с размером 12 для метки "Цена". -->
+
+         </font>
+          <!-- Закрывает секцию шрифта. -->
+
+      </Label>
+       <!-- Закрывает элемент Label для "Цена". -->
+
       <CheckBox fx:id="check_m" layoutX="108.0" layoutY="510.0" mnemonicParsing="false" text="муж" />
+       <!-- Создаёт CheckBox (флажок) с идентификатором check_m для выбора мужского пола. Расположен в координатах (108, 510). Текст — "муж". Горячие клавиши отключены (mnemonicParsing="false"). -->
+
       <CheckBox fx:id="check_w" layoutX="108.0" layoutY="538.0" mnemonicParsing="false" text="жен" />
-      <Label layoutX="37.0" layoutY="510.0" text="Пол" />
+       <!-- Создаёт CheckBox с идентификатором check_w для выбора женского пола. Расположен в координатах (108, 538). Текст — "жен". Горячие клавиши отключены. -->
+
+      <Label layoutX="37.0" layoutY="510.0" text="Пол">
+          <!-- Создаёт Label с текстом "Пол". Расположена в координатах (37, 510). Размеры не указаны, используются значения по умолчанию. -->
+
+         <font>
+             <!-- Открывает секцию для настройки шрифта метки. -->
+
+            <Font name="Segoe UI" size="12.0" />
+             <!-- Устанавливает шрифт Segoe UI с размером 12 для метки "Пол". -->
+
+         </font>
+          <!-- Закрывает секцию шрифта. -->
+
+      </Label>
+       <!-- Закрывает элемент Label для "Пол". -->
+
       <MenuBar layoutX="3.0" layoutY="2.0" prefHeight="26.0" prefWidth="642.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <!-- Создаёт MenuBar (панель меню). Расположена в координатах (3, 2). Предпочтительные размеры: высота 26 пикселей, ширина 642 пикселя. Фоновый цвет — белый (#FFFFFF). Привязана к левому (0), правому (0) и верхнему (0) краям AnchorPane. -->
+
         <menus>
+            <!-- Открывает секцию для элементов меню в MenuBar. -->
+
           <Menu mnemonicParsing="false" text="Файл">
+              <!-- Создаёт меню с названием "Файл". Горячие клавиши отключены. -->
+
             <items>
-              <MenuItem mnemonicParsing="false" text="Сохранить" />
-                  <MenuItem mnemonicParsing="false" text="Загрузить" />
+                <!-- Открывает секцию для пунктов меню внутри меню "Файл". -->
+
+              <MenuItem fx:id="menu_save" mnemonicParsing="false" onAction="#onSave" text="Сохранить" />
+                <!-- Создаёт пункт меню "Сохранить" с идентификатором menu_save. При выборе вызывает метод onSave в контроллере. Горячие клавиши отключены. -->
+
+                  <MenuItem fx:id="menu_load" mnemonicParsing="false" onAction="#onLoad" text="Загрузить" />
+                <!-- Создаёт пункт меню "Загрузить" с идентификатором menu_load. При выборе вызывает метод onLoad в контроллере. Горячие клавиши отключены. -->
+
             </items>
+              <!-- Закрывает секцию пунктов меню внутри меню "Файл". -->
+
           </Menu>
-          <Menu mnemonicParsing="false" text="Редактировать">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#onAdd" text="Добавить" />
-                  <MenuItem mnemonicParsing="false" onAction="#onDel" text="Удалить" />
-                  <MenuItem mnemonicParsing="false" text="Изменить" />
-                  <MenuItem mnemonicParsing="false" text="Найти" />
-                  <MenuItem mnemonicParsing="false" text="Сортировать" />
+            <!-- Закрывает меню "Файл". -->
+
+            <Menu mnemonicParsing="false" text="Операции">
+                <!-- Создаёт меню с названием "Операции". Горячие клавиши отключены. -->
+
+                <items>
+                    <!-- Открывает секцию для пунктов меню внутри меню "Операции". -->
+
+              <MenuItem fx:id="menu_add" mnemonicParsing="false" onAction="#onAdd" text="Добавить" />
+                    <!-- Создаёт пункт меню "Добавить" с идентификатором menu_add. При выборе вызывает метод onAdd в контроллере. Горячие клавиши отключены. -->
+
+                  <MenuItem fx:id="menu_del" mnemonicParsing="false" onAction="#onDel" text="Удалить" />
+                    <!-- Создаёт пункт меню "Удалить" с идентификатором menu_del. При выборе вызывает метод onDel в контроллере. Горячие клавиши отключены. -->
+
+                  <MenuItem fx:id="menu_edit" mnemonicParsing="false" onAction="#onEdit" text="Изменить" />
+                    <!-- Создаёт пункт меню "Изменить" с идентификатором menu_edit. При выборе вызывает метод onEdit в контроллере. Горячие клавиши отключены. -->
+
+                  <MenuItem fx:id="menu_find" mnemonicParsing="false" text="Найти" />
+                    <!-- Создаёт пункт меню "Найти" с идентификатором menu_find. Действие не указано (onAction отсутствует). Горячие клавиши отключены. -->
+
             </items>
+                <!-- Закрывает секцию пунктов меню внутри меню "Операции". -->
+
           </Menu>
-          <Menu mnemonicParsing="false" text="Помощь">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
+            <!-- Закрывает меню "Операции". -->
+
+            <Menu mnemonicParsing="false" text="Помощь">
+                <!-- Создаёт меню с названием "Помощь". Горячие клавиши отключены. -->
+
+              <items>
+                  <!-- Открывает секцию для пунктов меню внутри меню "Помощь". -->
+
+                <MenuItem fx:id="menu_about" mnemonicParsing="false" onAction="#About" text="Справка" />
+                  <!-- Создаёт пункт меню "Справка" с идентификатором menu_about. При выборе вызывает метод About в контроллере. Горячие клавиши отключены. -->
+
+              </items>
+                <!-- Закрывает секцию пунктов меню внутри меню "Помощь". -->
+
+            </Menu>
+            <!-- Закрывает меню "Помощь". -->
+
         </menus>
+          <!-- Закрывает секцию элементов меню в MenuBar. -->
+
       </MenuBar>
+       <!-- Закрывает элемент MenuBar. -->
+
       <ToolBar layoutX="8.0" layoutY="26.0" prefHeight="18.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+          <!-- Создаёт ToolBar (панель инструментов). Расположена в координатах (8, 26). Предпочтительные размеры: высота 18 пикселей, ширина 200 пикселей. Привязана к левому (0), правому (0) и верхнему (26) краям AnchorPane. -->
+
         <items>
-          <Button mnemonicParsing="false" style="-fx-background-color: #CCCCFF;" text="Сохранить" />
-            <Button layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#onAdd" style="-fx-background-color: #CCCCFF;" text="Добавить" />
-            <Button layoutX="66.0" layoutY="12.0" mnemonicParsing="false" onAction="#onDel" style="-fx-background-color: #CCCCFF;" text="Удалить" />
-            <Button layoutX="122.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #CCCCFF;" text="Найти" />
+            <!-- Открывает секцию для элементов панели инструментов. -->
+
+          <Button fx:id="Save_but" mnemonicParsing="false" onAction="#onSave" style="-fx-background-color: #CCCCFF;" text="Сохранить" />
+            <!-- Создаёт кнопку "Сохранить" с идентификатором Save_but. При нажатии вызывает метод onSave в контроллере. Фоновый цвет — #CCCCFF. Горячие клавиши отключены. -->
+
+            <Button fx:id="Add_but" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#onAdd" style="-fx-background-color: #CCCCFF;" text="Добавить" />
+            <!-- Создаёт кнопку "Добавить" с идентификатором Add_but. При нажатии вызывает метод onAdd в контроллере. Фоновый цвет — #CCCCFF. Горячие клавиши отключены. Координаты (10, 12) игнорируются, так как ToolBar управляет расположением. -->
+
+            <Button fx:id="Del_but" layoutX="66.0" layoutY="12.0" mnemonicParsing="false" onAction="#onDel" style="-fx-background-color: #CCCCFF;" text="Удалить" />
+            <!-- Создаёт кнопку "Удалить" с идентификатором Del_but. При нажатии вызывает метод onDel в контроллере. Фоновый цвет — #CCCCFF. Горячие клавиши отключены. Координаты (66, 12) игнорируются, так как ToolBar управляет расположением. -->
+
+            <Button fx:id="Find_but" layoutX="122.0" layoutY="12.0" mnemonicParsing="false" onAction="#onSearch" style="-fx-background-color: #CCCCFF;" text="Найти" />
+            <!-- Создаёт кнопку "Найти" с идентификатором Find_but. При нажатии вызывает метод onSearch в контроллере. Фоновый цвет — #CCCCFF. Горячие клавиши отключены. Координаты (122, 12) игнорируются, так как ToolBar управляет расположением. -->
+
         </items>
+          <!-- Закрывает секцию элементов панели инструментов. -->
+
       </ToolBar>
+       <!-- Закрывает элемент ToolBar. -->
+
    </children>
+    <!-- Закрывает секцию дочерних элементов AnchorPane. -->
+
 </AnchorPane>
+        <!-- Закрывает корневой элемент AnchorPane. -->
