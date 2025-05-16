@@ -1,5 +1,6 @@
-package com.inessa.data_base;
 // Автор:Высоцкая И. Д.
+package com.inessa.data_base;
+
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -112,6 +113,61 @@ public class Data_base {
     }
 
     /**
+     * Метод поиска клиента по названию стрижки
+     * Кидаем исключение если такого человека нет
+     * strig - название стрижки
+     */
+    public int Search_strig(String strig)
+    {
+        for (int i = 0; i < Client_list.size(); i++) // проходим по списку (базе данных)
+        {
+            if (Client_list.get(i).getStrig().equalsIgnoreCase(strig)) // сверяем данные о клиенте
+            {
+                return i; // возвращаем индекс
+            }
+        }
+        throw new OutOfMemoryError("Человек не найден"); // если нет человека
+    }
+
+    /**
+     * Метод поиска клиента по цене за стрижку
+     * Кидаем исключение если такого человека нет
+     * price - цена за стрижку
+     */
+    public int Search_price(Integer price)
+    {
+        for (int i = 0; i < Client_list.size(); i++) // проходим по списку (базе данных)
+        {
+            if (Client_list.get(i).getPrice() == price) // сверяем данные о клиенте
+            {
+                return i; // возвращаем индекс
+            }
+        }
+        throw new OutOfMemoryError("Человек не найден"); // если нет человека
+    }
+
+    /**
+     * Метод поиска клиента по фамилии или имени или отчеству
+     * Кидаем исключение если такого человека нет
+     * fam - фамилия
+     * name - имя
+     * otch - отчество
+     */
+    public int Search_fio(String fam, String name, String otch)
+    {
+        for (int i = 0; i < Client_list.size(); i++) // проходим по списку (базе данных)
+        {
+            if (Client_list.get(i).getFam().equalsIgnoreCase(fam) || // сверяем данные о клиенте
+                    Client_list.get(i).getName().equalsIgnoreCase(name) ||
+                    Client_list.get(i).getOtch().equalsIgnoreCase(otch))
+            {
+                return i; // возвращаем индекс
+            }
+        }
+        throw new OutOfMemoryError("Человек не найден"); // если нет человека
+    }
+
+    /**
      * Получение списка клиентов
      */
     public ObservableList<Client> getClient_list()
@@ -122,18 +178,18 @@ public class Data_base {
     /**
      * Сохранение базы данных в файл.
      * Работает с текстовыми файлами(txt).
-     * Каждая строка файла - отдельный клиент(разделитель пробел): фамилия имя отчество пол стрижка цена стрижки
-     * Пример: gng hk jhttk муж uggm 8
+     * Каждая строка файла - отдельный клиент(разделитель ;): фамилия ; имя ; отчество ; пол ; стрижка ; цена стрижки
+     * Пример: gng ; hk ; jhttk ; муж ; uggm ; 8
      * @param file имя файла
      */
     public void Save(String file)
     {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file)))
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) // инициализация записи в файл
         {
-            for (Client client : Client_list)
+            for (Client client : Client_list) // пока есть клиенты
             {
-                writer.write(client.toString());
-                writer.newLine();
+                writer.write(client.toString()); // записываем в файл
+                writer.newLine(); // переход на следующую строку
             }
         }
         catch (IOException e) {
@@ -144,24 +200,24 @@ public class Data_base {
     /**
      * Загрузка базы данных из файла.
      * Работает с текстовыми файлами(txt).
-     * Каждая строка файла - отдельный клиент(разделитель пробел): фамилия имя отчество пол стрижка цена стрижки
-     * Пример: gng hk jhttk муж uggm 8
+     * Каждая строка файла - отдельный клиент(разделитель ;): фамилия ; имя ; отчество ; пол ; стрижка ; цена
+     * Пример: gng ; hk ; jhttk ; муж ; uggm ; 8
      * @param file имя файла
      */
     public void Load(String file)
     {
-        if (Files.exists(Paths.get(file)))
+        if (Files.exists(Paths.get(file))) // если файл существует
         {
-            try (BufferedReader reader = new BufferedReader(new FileReader(file)))
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) // инициализация чтения из файла
             {
-                String line;
-                while ((line = reader.readLine()) != null)
+                String line; // строка
+                while ((line = reader.readLine()) != null) // пока есть строки
                 {
-                    String[] part = line.split(" ");
+                    String[] part = line.split(" ; ");
                     Client_list.add(new Client(part[0], part[1], part[2], part[3], part[4], Integer.parseInt(part[5])));
                 }
             }
-            catch (IOException e)
+            catch (IOException e) // если исключение
             {
                 e.printStackTrace();
             }

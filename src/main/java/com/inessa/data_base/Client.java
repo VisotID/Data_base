@@ -1,5 +1,6 @@
-package com.inessa.data_base;
 // Автор: Высоцкая И. Д.
+package com.inessa.data_base;
+
 /**
  * Класс клиент парикмахерской
  */
@@ -36,7 +37,7 @@ public class Client {
 
     /**
      * Вставка отчества
-     * При отсутствии ставится прочерк
+     * Указывается при наличии, при отсутствии ставится прочерк
      * String otch - отчество
      */
     public void setOtch(String otch) {
@@ -71,6 +72,7 @@ public class Client {
 
     /**
      * Вставка цены за стрижку
+     * Не может быть пустым
      * String fam - фамилия
      */
     public void setPrice(int price) {
@@ -127,7 +129,7 @@ public class Client {
      */
     @Override
     public String toString() {
-        return fam + " " + name + " " + otch + " " + gen + " " + strig + " " + Integer.toString(price);
+        return fam + " ; " + name + " ; " + otch + " ; " + gen + " ; " + strig + " ; " + Integer.toString(price);
     }
 
     /**

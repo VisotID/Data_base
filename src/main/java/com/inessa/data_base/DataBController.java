@@ -1,3 +1,4 @@
+// Автор: Высоцкая И.Д.
 package com.inessa.data_base;
 
 import javafx.beans.value.ChangeListener;
@@ -12,7 +13,6 @@ import java.io.File;
 
 /**
  * Контроллер базы данных
- * Автор: Высоцкая И.Д.
  */
 public class DataBController {
 
@@ -77,6 +77,15 @@ public class DataBController {
     MenuItem menu_find; // кнопка меню найти
 
     @FXML
+    MenuItem menu_fio; // кнопка меню найти по ФИО
+
+    @FXML
+    MenuItem menu_strig; // кнопка меню найти по стрижке
+
+    @FXML
+    MenuItem menu_price; // кнопка меню найти по цене
+
+    @FXML
     MenuItem menu_about; // кнопка меню помощь
 
     @FXML
@@ -134,6 +143,9 @@ public class DataBController {
         menu_del.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
         menu_edit.setAccelerator(KeyCombination.keyCombination("Ctrl+E"));
         menu_find.setAccelerator(KeyCombination.keyCombination("Ctrl+F"));
+        menu_fio.setAccelerator(KeyCombination.keyCombination("Alt+F"));
+        menu_strig.setAccelerator(KeyCombination.keyCombination("Alt+S"));
+        menu_price.setAccelerator(KeyCombination.keyCombination("Alt+P"));
         menu_save.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
         menu_load.setAccelerator(KeyCombination.keyCombination("Ctrl+L"));
         menu_about.setAccelerator(KeyCombination.keyCombination("Ctrl+P"));
@@ -206,7 +218,8 @@ public class DataBController {
     }
 
     /**
-     * Событие при нажатии на кнопку/кнопку меню найти
+     * Событие при нажатии на кнопку/кнопку меню найти(поиск при введении всех данных)
+     * Бросается исключение, если клиент не найден
      */
     public void onSearch()
     {
@@ -216,13 +229,13 @@ public class DataBController {
             {
                 if (check_m.isSelected()) // если галочка напротив муж
                 {
-                    int i = data_base.Search_c(fam_f.getText(), name_f.getText(), otch_f.getText(), "муж", strig_f.getText(), Integer.parseInt(price_f.getText()));
-                    selectionModel.select(i);
+                    int i = data_base.Search_c(fam_f.getText(), name_f.getText(), otch_f.getText(), "муж", strig_f.getText(), Integer.parseInt(price_f.getText())); // ищем клиента в базе данных если введены
+                    selectionModel.select(i); // указываем клиента в таблице
                 }
                 else if (check_w.isSelected()) // если галочка напротив жен
                 {
-                    int i = data_base.Search_c(fam_f.getText(), name_f.getText(), otch_f.getText(), "жен", strig_f.getText(), Integer.parseInt(price_f.getText()));
-                    selectionModel.select(i);
+                    int i = data_base.Search_c(fam_f.getText(), name_f.getText(), otch_f.getText(), "жен", strig_f.getText(), Integer.parseInt(price_f.getText())); // ищем клиента в базе данных если введены
+                    selectionModel.select(i); // указываем клиента в таблице
                 }
             } catch (OutOfMemoryError e) {
                 e.printStackTrace();
@@ -231,8 +244,69 @@ public class DataBController {
     }
 
     /**
+     * Событие при нажатии на кнопку меню найти по ФИО(поиск по фамилии или имени или отчеству)
+     * Бросается исключение, если клиент не найден
+     */
+    public void onSearch_fio()
+    {
+        if (!fam_f.getText().isEmpty() || !name_f.getText().isEmpty()) // проверка на пустоту введеных полей
+        {
+            try
+            {
+                int i = data_base.Search_fio(fam_f.getText(), name_f.getText(), otch_f.getText()); // ищем клиента в базе данных если введены
+                selectionModel.select(i); // указываем клиента в таблице
+            }
+            catch (OutOfMemoryError e) // если исключение
+            {
+                e.printStackTrace(); // ошибка
+            }
+        }
+    }
+
+    /**
+     * Событие при нажатии на кнопку меню найти по стрижке(поиск по названию стрижки)
+     * Бросается исключение, если клиент не найден
+     */
+    public void onSearch_strig()
+    {
+        if (!strig_f.getText().isEmpty())
+        {
+            try
+            {
+                int i = data_base.Search_strig(strig_f.getText()); // ищем клиента в базе данных если введены
+                selectionModel.select(i); // указываем клиента в таблице
+            }
+            catch (OutOfMemoryError e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Событие при нажатии на кнопку меню найти по цене(поиск по цене за стрижку)
+     * Бросается исключение, если клиент не найден или невозможно преобразовать введенное значение в число
+     */
+    public void onSearch_price()
+    {
+        if (!price_f.getText().isEmpty())
+        {
+            try
+            {
+                int i = data_base.Search_price(Integer.parseInt(price_f.getText())); // ищем клиента в базе данных если введены
+                selectionModel.select(i); // указываем клиента в таблице
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
      * Событие при нажатии на кнопку меню изменить
      * Если в чекбоксе не выбрано ни одного варианта, добавления не произойдёт, если выбрано оба варианта будет выбрано муж
+     * Бросается исключение, если индекс за пределами списка
      */
     public void onEdit()
     {
@@ -263,6 +337,7 @@ public class DataBController {
 
     /**
      * Событие при нажатии на кнопку/кнопку меню сохранить
+     * Бросается исключение, если сохранить базу данных в файл невозможно
      */
     public void onSave()
     {
@@ -290,6 +365,7 @@ public class DataBController {
 
     /**
      * Событие при нажатии на кнопку меню загрузить
+     * Бросается исключение, если невозможно получить доступ к файлу
      */
     public void onLoad()
     {
