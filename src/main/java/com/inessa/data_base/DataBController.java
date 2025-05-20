@@ -1,5 +1,5 @@
 // Автор: Высоцкая И.Д.
-package com.inessa.data_base;
+package com.inessa.data_base; // название пакета программы
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -218,6 +218,26 @@ public class DataBController {
     }
 
     /**
+     * Метод очистки полей
+     */
+    private void clear()
+    {
+        fam_f.clear();
+        name_f.clear();
+        otch_f.clear();
+        if (check_w.isSelected())
+        {
+            check_w.fire();
+        }
+        if (check_m.isSelected())
+        {
+            check_m.fire();
+        }
+        strig_f.clear();
+        price_f.clear();
+    }
+
+    /**
      * Событие при нажатии на кнопку/кнопку меню найти(поиск при введении всех данных)
      * Бросается исключение, если клиент не найден
      */
@@ -231,11 +251,13 @@ public class DataBController {
                 {
                     int i = data_base.Search_c(fam_f.getText(), name_f.getText(), otch_f.getText(), "муж", strig_f.getText(), Integer.parseInt(price_f.getText())); // ищем клиента в базе данных если введены
                     selectionModel.select(i); // указываем клиента в таблице
+                    clear(); // очищаем поля
                 }
                 else if (check_w.isSelected()) // если галочка напротив жен
                 {
                     int i = data_base.Search_c(fam_f.getText(), name_f.getText(), otch_f.getText(), "жен", strig_f.getText(), Integer.parseInt(price_f.getText())); // ищем клиента в базе данных если введены
                     selectionModel.select(i); // указываем клиента в таблице
+                    clear(); // очищаем поля
                 }
             } catch (OutOfMemoryError e) {
                 e.printStackTrace();
@@ -255,6 +277,7 @@ public class DataBController {
             {
                 int i = data_base.Search_fio(fam_f.getText(), name_f.getText(), otch_f.getText()); // ищем клиента в базе данных если введены
                 selectionModel.select(i); // указываем клиента в таблице
+                clear(); // очищаем поля
             }
             catch (OutOfMemoryError e) // если исключение
             {
@@ -275,6 +298,7 @@ public class DataBController {
             {
                 int i = data_base.Search_strig(strig_f.getText()); // ищем клиента в базе данных если введены
                 selectionModel.select(i); // указываем клиента в таблице
+                clear(); // очищаем поля
             }
             catch (OutOfMemoryError e)
             {
@@ -295,6 +319,7 @@ public class DataBController {
             {
                 int i = data_base.Search_price(Integer.parseInt(price_f.getText())); // ищем клиента в базе данных если введены
                 selectionModel.select(i); // указываем клиента в таблице
+                clear(); // очищаем поля
             }
             catch (Exception e)
             {
